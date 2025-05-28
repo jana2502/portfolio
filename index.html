@@ -54,9 +54,6 @@
     .dark .navbar {
       background: rgba(17, 24, 39, 0.05);
     }
-    .dark .navbar.scrolled {
-      background: rgba(17, 24, 39, 0.85);
-    }
   </style>
 </head>
 <body class="font-inter bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
@@ -271,16 +268,6 @@
     if (localStorage.getItem('theme') === 'dark') {
       document.body.classList.add('dark');
     }
-
-    // Navbar Scroll Effect
-    window.addEventListener('scroll', () => {
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
   </script>
 
 </body>
