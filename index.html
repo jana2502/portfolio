@@ -51,6 +51,13 @@
             background: rgba(0, 0, 0, 0.7);
         }
 
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: #00ff88;
+        }
+
         header h1 {
             font-size: 1.8em;
             color: #00ff88;
@@ -82,42 +89,42 @@
             height: 100vh;
             text-align: center;
             padding: 20px;
-            gap: 15px; /* Added for consistent spacing */
+            gap: 15px;
         }
 
         .hero img.profile-photo {
-            width: 200px; /* Increased for prominence */
+            width: 200px;
             height: 200px;
             border-radius: 50%;
-            border: 4px solid #00ff88; /* Thicker border */
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6), inset 0 0 5px rgba(255, 255, 255, 0.2); /* Enhanced glow + inner shadow */
-            margin-bottom: 25px; /* More space below */
+            border: 4px solid #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6), inset 0 0 5px rgba(255, 255, 255, 0.2);
+            margin-bottom: 25px;
             object-fit: cover;
-            object-position: center; /* Center the image */
-            opacity: 0; /* For entrance animation */
-            transform: scale(0.8); /* Start smaller */
-            transition: opacity 0.6s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+            object-position: center;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.6s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .hero img.profile-photo.visible {
             opacity: 1;
-            transform: scale(1); /* Animate to full size */
+            transform: scale(1);
         }
 
         .hero img.profile-photo:hover {
-            transform: scale(1.05); /* Subtle zoom on hover */
+            transform: scale(1.05);
             box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
         }
 
         .hero h2 {
-            font-size: 3.5em; /* Larger for emphasis */
+            font-size: 3.5em;
             color: #00ff88;
             text-shadow: 0 0 12px rgba(0, 255, 136, 0.6);
             margin-bottom: 12px;
         }
 
         .hero p {
-            font-size: 1.6em; /* Larger for readability */
+            font-size: 1.6em;
             color: #ddd;
             text-shadow: 0 0 6px rgba(0, 255, 136, 0.4);
             margin-bottom: 25px;
@@ -125,7 +132,7 @@
 
         .hero-buttons {
             display: flex;
-            gap: 20px; /* Increased spacing */
+            gap: 20px;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -159,13 +166,11 @@
             transform-origin: center;
         }
 
-        /* Odd sections: down-to-up */
         section:nth-child(odd) {
             transform: translateY(50px) rotateX(-5deg);
             background: rgba(0, 50, 50, 0.1);
         }
 
-        /* Even sections: up-to-down */
         section:nth-child(even) {
             transform: translateY(-50px) rotateX(5deg);
             background: rgba(50, 0, 50, 0.1);
@@ -303,78 +308,160 @@
         }
 
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.5em;
+            /* Header adjustments */
+            header {
+                flex-direction: column;
+                padding: 15px;
+                align-items: flex-start;
             }
 
-            .hero {
-                padding: 10px;
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
             }
 
-            .hero img.profile-photo {
-                width: 150px; /* Larger for mobile */
-                height: 150px;
-                border: 3px solid #00ff88;
-                box-shadow: 0 0 15px rgba(0, 255, 136, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.2);
-                margin-bottom: 20px;
+            nav {
+                display: none;
+                width: 100%;
             }
 
-            .hero h2 {
-                font-size: 2.5em; /* Adjusted for mobile */
-            }
-
-            .hero p {
-                font-size: 1.3em; /* Adjusted for mobile */
-            }
-
-            .hero-buttons {
-                gap: 15px;
-            }
-
-            .contact-button, .resume-button {
-                padding: 8px 16px;
-                font-size: 1em;
+            nav.active {
+                display: block;
             }
 
             nav ul {
+                flex-direction: column;
                 gap: 10px;
+                width: 100%;
+                align-items: center;
+                background: rgba(0, 0, 0, 0.9);
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            header h1 {
+                font-size: 1.4em;
+                margin-bottom: 10px;
             }
 
             nav ul li a {
+                font-size: 1em;
+                padding: 5px 10px;
+            }
+
+            /* Hero section adjustments */
+            .hero {
+                padding: 15px;
+                height: auto;
+                min-height: 80vh;
+            }
+
+            .hero img.profile-photo {
+                width: 120px;
+                height: 120px;
+                border: 2px solid #00ff88;
+                margin-bottom: 15px;
+            }
+
+            .hero h2 {
+                font-size: 2em;
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+                margin-bottom: 20px;
+            }
+
+            .hero-buttons {
+                gap: 10px;
+                flex-direction: column;
+            }
+
+            .contact-button, .resume-button {
+                padding: 8px 20px;
                 font-size: 0.9em;
             }
 
+            /* Section adjustments */
             section {
+                margin: 20px 0;
                 padding: 15px;
             }
 
             section h2 {
-                font-size: 1.5em;
+                font-size: 1.4em;
+                margin-bottom: 15px;
             }
 
             .item-container, .education-item {
                 padding: 10px;
+                margin-bottom: 10px;
             }
 
-            .contact-links {
-                gap: 15px;
-            }
-
-            .contact-links a, .contact-links span {
-                font-size: 1em;
-            }
-
-            .contact-links i {
-                font-size: 1.1em;
+            .item-container h3, .education-item h3 {
+                font-size: 1.3em;
             }
 
             section ul li {
-                padding-left: 35px;
+                font-size: 1em;
+                padding-left: 30px;
             }
 
             .skill-logo {
-                width: 18px;
-                height: 18px;
+                width: 16px;
+                height: 16px;
+            }
+
+            /* Footer adjustments */
+            footer {
+                padding: 15px;
+            }
+
+            .contact-links {
+                gap: 10px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-links a, .contact-links span {
+                font-size: 0.9em;
+            }
+
+            .contact-links i {
+                font-size: 1em;
+            }
+
+            /* Optimize animations for mobile */
+            section, .hero img.profile-photo, .item-container, .education-item, section ul li {
+                transition: none;
+                transform: none;
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero img.profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .hero h2 {
+                font-size: 1.8em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            section h2 {
+                font-size: 1.2em;
+            }
+
+            .item-container h3, .education-item h3 {
+                font-size: 1.2em;
             }
         }
     </style>
@@ -383,6 +470,9 @@
     <canvas id="canvas"></canvas>
     <header>
         <h1>Janarthanan S</h1>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
         <nav>
             <ul>
                 <li><a href="#objective">About</a></li>
@@ -522,21 +612,30 @@
         // Particle Background Script
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+
+        // Set canvas size to match viewport
+        function resizeCanvas() {
+            canvas.width = window.innerWidth * window.devicePixelRatio;
+            canvas.height = window.innerHeight * window.devicePixelRatio;
+            canvas.style.width = window.innerWidth + 'px';
+            canvas.style.height = window.innerHeight + 'px';
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+
+        resizeCanvas();
 
         let particles = [];
         const mouse = { x: null, y: null };
-        const maxParticles = 100;
+        const maxParticles = window.innerWidth < 768 ? 50 : 100;
         const particleRadius = 2;
         const maxDistance = 100;
 
         class Particle {
             constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 2;
-                this.vy = (Math.random() - 0.5) * 2;
+                this.x = Math.random() * canvas.width / window.devicePixelRatio;
+                this.y = Math.random() * canvas.height / window.devicePixelRatio;
+                this.vx = (Math.random() - 0.5) * 1.5;
+                this.vy = (Math.random() - 0.5) * 1.5;
                 this.baseX = this.x;
                 this.baseY = this.y;
             }
@@ -551,21 +650,21 @@
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     if (distance < maxDistance) {
                         const force = (maxDistance - distance) / maxDistance;
-                        this.vx += dx * force * 0.05;
-                        this.vy += dy * force * 0.05;
+                        this.vx += dx * force * 0.03;
+                        this.vy += dy * force * 0.03;
                     }
                 }
 
                 const dxBase = this.baseX - this.x;
                 const dyBase = this.baseY - this.y;
-                this.vx += dxBase * 0.02;
-                this.vy += dyBase * 0.02;
+                this.vx += dxBase * 0.01;
+                this.vy += dyBase * 0.01;
 
-                this.vx *= 0.95;
-                this.vy *= 0.95;
+                this.vx *= 0.97;
+                this.vy *= 0.97;
 
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                if (this.x < 0 || this.x > canvas.width / window.devicePixelRatio) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height / window.devicePixelRatio) this.vy *= -1;
             }
 
             draw() {
@@ -592,6 +691,7 @@
             requestAnimationFrame(animate);
         }
 
+        // Mouse and touch events
         window.addEventListener('mousemove', e => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
@@ -602,14 +702,39 @@
             mouse.y = null;
         });
 
+        window.addEventListener('touchmove', e => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            mouse.x = touch.clientX;
+            mouse.y = touch.clientY;
+        });
+
+        window.addEventListener('touchend', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
         window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            resizeCanvas();
             init();
         });
 
+        // Optimize for mobile performance
+        if (/Mobi|Android/i.test(navigator.userAgent)) {
+            // Optionally disable animation on mobile if performance is poor
+            // canvas.style.display = 'none'; // Uncomment to disable canvas on mobile
+        }
+
         init();
         animate();
+
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
 
         // Scroll Animation Script
         const sections = document.querySelectorAll('section');
@@ -629,7 +754,7 @@
                         subsection.classList.remove('visible');
                         setTimeout(() => {
                             subsection.classList.add('visible');
-                        }, index * 80); // 80ms delay per subsection
+                        }, index * 80);
                     });
                 } else {
                     subsections.forEach(subsection => {
@@ -648,7 +773,7 @@
             const profilePhoto = document.querySelector('.hero img.profile-photo');
             setTimeout(() => {
                 profilePhoto.classList.add('visible');
-            }, 200); // Delay for smooth effect
+            }, 200);
         });
     </script>
 </body>
