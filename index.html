@@ -1,274 +1,590 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Janarthanan S | IT Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <style>
-    .glassmorphism {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 12px;
-    }
-    .card-hover {
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    }
-    .card-hover:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    .btn-hover {
-      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .btn-hover:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    .nav-hover {
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-    .nav-hover:hover {
-      color: #1e40af;
-      transform: translateY(-2px);
-    }
-    .dark .glassmorphism {
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-    .navbar {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(15px);
-      transition: background-color 0.3s ease;
-    }
-    .navbar.scrolled {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(15px);
-    }
-    .dark .navbar {
-      background: rgba(17, 24, 39, 0.05);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janarthanan S - Portfolio</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        header h1 {
+            font-size: 1.8em;
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #00ff88;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3em;
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            color: #ddd;
+            text-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: transparent;
+            border: 2px solid #00ff88;
+            color: #00ff88;
+            text-decoration: none;
+            font-size: 1.1em;
+            border-radius: 5px;
+            text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+            transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background: #00ff88;
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.7);
+        }
+
+        section {
+            margin: 40px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.4s ease;
+            transform-origin: center;
+        }
+
+        /* Odd sections: down-to-up */
+        section:nth-child(odd) {
+            transform: translateY(50px) rotateX(-5deg);
+            background: rgba(0, 50, 50, 0.1); /* Dark teal */
+        }
+
+        /* Even sections: up-to-down */
+        section:nth-child(even) {
+            transform: translateY(-50px) rotateX(5deg);
+            background: rgba(50, 0, 50, 0.1); /* Dark purple */
+        }
+
+        section.visible {
+            opacity: 0.7;
+            transform: translateY(0) rotateX(0deg);
+        }
+
+        section:hover {
+            opacity: 1;
+            transform: scale(1) translateY(0) rotateX(0deg); /* Ensure hover respects section animation */
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+        }
+
+        section h2 {
+            color: #00ff88;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 10px;
+        }
+
+        section p, section ul {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        section ul {
+            list-style-type: none;
+        }
+
+        section ul li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 40px;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        section.visible ul li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        section ul li::before {
+            content: '•';
+            color: #00ff88;
+            position: absolute;
+            left: 0;
+        }
+
+        .skill-logo {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.5));
+        }
+
+        .item-container, .education-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        section.visible .item-container, section.visible .education-item {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .item-container h3, .education-item h3 {
+            color: #00ff88;
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .item-container p, .education-item p {
+            margin: 5px 0;
+        }
+
+        .divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, rgba(0, 255, 136, 0), rgba(0, 255, 136, 0.5), rgba(0, 255, 136, 0));
+            margin: 15px 0;
+            box-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            margin-top: 40px;
+        }
+
+        footer p {
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a, .contact-links span {
+            color: #00ff88;
+            text-decoration: none;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+        }
+
+        .contact-links i {
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            .hero h2 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            .contact-button {
+                padding: 8px 16px;
+                font-size: 1em;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav ul li a {
+                font-size: 0.9em;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            section h2 {
+                font-size: 1.5em;
+            }
+
+            .item-container, .education-item {
+                padding: 10px;
+            }
+
+            .contact-links {
+                gap: 15px;
+            }
+
+            .contact-links a, .contact-links span {
+                font-size: 1em;
+            }
+
+            .contact-links i {
+                font-size: 1.1em;
+            }
+
+            section ul li {
+                padding-left: 35px;
+            }
+
+            .skill-logo {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    </style>
 </head>
-<body class="font-inter bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
+<body>
+    <canvas id="canvas"></canvas>
+    <header>
+        <h1>Janarthanan S</h1>
+        <nav>
+            <ul>
+                <li><a href="#objective">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Hero Section -->
-  <header class="bg-gradient-to-r from-blue-800 via-indigo-700 to-purple-700 text-white py-40 relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/circuit.png')] opacity-10"></div>
-    <div class="max-w-7xl mx-auto px-4 text-center relative z-10" data-aos="fade-up" data-aos-duration="1000">
-      <h1 class="text-5xl md:text-7xl font-extrabold mb-6">Janarthanan S</h1>
-      <div class="flex justify-center gap-6">
-        <a href="mailto:janasj4444@gmail.com" class="bg-white text-blue-800 px-8 py-4 rounded-full font-semibold btn-hover glassmorphism">Contact Me</a>
-        <a href="Jana_New_Resume.pdf" download class="bg-transparent border-2 border-white px-8 py-4 rounded-full font-semibold btn-hover hover:bg-white hover:text-blue-800">Download Resume</a>
-      </div>
+    <div class="hero">
+        <h2>Hi, I'm Jana</h2>
+        <p>Backend Developer | Logic Enthusiast</p>
+        <a href="mailto:janasj4444@gmail.com" class="contact-button">Contact Me</a>
     </div>
-  </header>
 
-  <!-- Navigation -->
-  <nav class="navbar sticky top-0 z-50" id="navbar">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="text-2xl font-bold">Portfolio</div>
-      <div class="hidden md:flex space-x-8">
-        <a href="#about" class="text-gray-800 dark:text-gray-100 nav-hover font-medium">About</a>
-        <a href="#experience" class="text-gray-800 dark:text-gray-100 nav-hover font-medium">Experience</a>
-        <a href="#education" class="text-gray-800 dark:text-gray-100 nav-hover font-medium">Education</a>
-        <a href="#skills" class="text-gray-800 dark:text-gray-100 nav-hover font-medium">Skills</a>
-        <a href="#projects" class="text-gray-800 dark:text-gray-100 nav-hover font-medium">Projects</a>
-        <a href="#contact" class="text-gray-800 dark:text-gray-100 nav-hover font-medium">Contact</a>
-      </div>
-      <div class="flex items-center gap-4">
-        <button id="theme-toggle" class="focus:outline-none">
-          <i class="fas fa-moon text-xl dark:hidden"></i>
-          <i class="fas fa-sun text-xl hidden dark:block"></i>
-        </button>
-        <button class="md:hidden focus:outline-none" onclick="toggleMenu()">
-          <i class="fas fa-bars text-2xl"></i>
-        </button>
-      </div>
+    <div class="container">
+        <section id="objective">
+            <h2>Objective</h2>
+            <p>A dedicated B.E. Electronics & Communication Engineering graduate with expertise in programming, and IT solutions. I specialize in Python and SQL delivering innovative and efficient systems for real-world challenges.</p>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="item-container">
+                <h3>Intern - Backend Developer</h3>
+                <p>Sarbajira Software Pvt Ltd | Salem, India</p>
+                <p>02/06/2025 - Present</p>
+                <p>Focused on creating APIs using FastAPI and PostgreSQL for modern, scalable applications.</p>
+            </div>
+            <div class="item-container">
+                <h3>Intern - Embedded Systems</h3>
+                <p>Sunshiv Electronic Solutions | Coimbatore, India</p>
+                <p>03/07/2023 - 16/07/2023</p>
+                <p>Developed and programmed embedded systems using PIC microcontrollers for various applications.</p>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>B.E ECE - Knowledge Institute of Technology, Salem</h3>
+                <p>2025 | CGPA: 7.43</p>
+            </div>
+            <hr class="divider">
+            <div class="education-item">
+                <h3>HSC - Sri Vidya Mandir Senior Sec School (CBSE), Shivaji Nagar, Salem</h3>
+                <p>2021 | 69%</p>
+            </div>
+            <hr class="divider">
+            <div class="education-item">
+                <h3>SSLC - Sri Vidya Mandir Secondary School (CBSE), Kondalampatty, Salem</h3>
+                <p>2019 | 69%</p>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <h2>Key Achievements</h2>
+            <ul>
+                <li>Completed a 12-week NPTEL course on Digital System Design with 50%, learning the basics of designing digital circuits using logic gates and sequential elements.</li>
+                <li>Completed a 12-week NPTEL course on Ethical Hacking with 54%, covering the basics of cybersecurity and ethical hacking techniques to protect computer systems.</li>
+            </ul>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul class="item-container">
+                <h3>Programming Languages</h3>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg" alt="Python" class="skill-logo"> Python</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/c.svg" alt="C" class="skill-logo"> C</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gnubash.svg" alt="Bash" class="skill-logo"> Bash</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg" alt="SQL" class="skill-logo"> SQL</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg" alt="NoSQL" class="skill-logo"> NoSQL</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/html5.svg" alt="HTML" class="skill-logo"> HTML</li>
+            </ul>
+            <hr class="divider">
+            <ul class="item-container">
+                <h3>Frameworks & Libraries</h3>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/fastapi.svg" alt="FastAPI" class="skill-logo"> FastAPI</li>
+            </ul>
+            <hr class="divider">
+            <ul class="item-container">
+                <h3>Software & Tools</h3>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg" alt="MySQL" class="skill-logo"> MySQL</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg" alt="PostgreSQL" class="skill-logo"> PostgreSQL</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg" alt="MongoDB" class="skill-logo"> MongoDB</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/git.svg" alt="Git" class="skill-logo"> Git</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/visualstudiocode.svg" alt="VS Code" class="skill-logo"> VS Code</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg" alt="Python Idle" class="skill-logo"> Python Idle</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="item-container">
+                <h3>Smart Blind Stick</h3>
+                <p>Helps visually impaired users detect obstacles and navigate safely.</p>
+            </div>
+            <div class="item-container">
+                <h3>AI Chatbot</h3>
+                <p>An intelligent AI-powered chatbot built with FastAPI and PostgreSQL for seamless, scalable, and efficient conversational experiences.</p>
+            </div>
+        </section>
+
+        <section id="certifications">
+            <h2>Certifications</h2>
+            <ul>
+                <li>C & SQL - Amphisoft Technologies</li>
+            </ul>
+        </section>
+
+        <section id="extracurricular">
+            <h2>Extracurricular</h2>
+            <ul>
+                <li>Basketball Zonal Level - Winner 2023 & 2024</li>
+                <li>Kho-Kho District Level - Runner [Role: Captain]</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>© 2025 Janarthanan S. All rights reserved.</p>
+            <div class="contact-links">
+                <a href="tel:+918248023801"><i class="fas fa-phone"></i> +91 8248023801</a>
+                <a href="https://www.linkedin.com/in/hackerjana" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/jana2502" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <span><i class="fas fa-map-marker-alt"></i> Salem</span>
+            </div>
+        </footer>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 shadow-lg glassmorphism">
-      <a href="#about" class="block px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800">About</a>
-      <a href="#experience" class="block px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800">Experience</a>
-      <a href="#education" class="block px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800">Education</a>
-      <a href="#skills" class="block px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800">Skills</a>
-      <a href="#projects" class="block px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-akeyboard_arrow_up">Projects</a>
-      <a href="#contact" class="block px-4 py-3 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
-    </div>
-  </nav>
 
-  <!-- About Section -->
-  <section id="about" class="py-24 bg-gray-50 dark:bg-gray-900" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 mb-10">About Me</h2>
-      <p class="text-lg text-center max-w-3xl mx-auto text-gray-700 dark:text-gray-300">A dedicated B.E. Electronics & Communication Engineering graduate with expertise in programming, and IT solutions. I specialize in Java, C,and MySQL delivering innovative and efficient systems for real-world challenges.</p>
-    </div>
-  </section>
+    <script>
+        // Particle Background Script
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-  <!-- Experience Section -->
-  <section id="experience" class="py-24 bg-white dark:bg-gray-950" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 mb-10">Professional Experience</h2>
-      <div class="max-w-3xl mx-auto">
-        <div class="p-8 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-xl card-hover glassmorphism">
-          <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">Embedded Systems Intern</h3>
-          <p class="text-gray-600 dark:text-gray-300">Sunshiv Electronic Solutions, Coimbatore | July 2023</p>
-          <ul class="list-disc list-inside mt-6 text-gray-600 dark:text-gray-300">
-            <li>Developed firmware for PIC microcontrollers, enabling robust embedded system applications.</li>
-            <li>Collaborated on system design and testing, optimizing performance and reliability.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+        let particles = [];
+        const mouse = { x: null, y: null };
+        const maxParticles = 100;
+        const particleRadius = 2;
+        const maxDistance = 100;
 
-  <!-- Education Section -->
-  <section id="education" class="py-24 bg-gray-50 dark:bg-gray-900" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 mb-10">Education</h2>
-      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-        <div class="p-8 bg-white dark:bg-gray-950 rounded-xl shadow-xl card-hover glassmorphism">
-          <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">B.E. Electronics & Communication Engineering</h3>
-          <p class="text-gray-600 dark:text-gray-300">Knowledge Institute of Technology, Salem | 2021–2025</p>
-          <p class="text-gray-600 dark:text-gray-300">CGPA: 7.43</p>
-        </div>
-        <div class="p-8 bg-white централизованный dark:bg-gray-950 rounded-xl shadow-xl card-hover glassmorphism">
-          <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">HSC</h3>
-          <p class="text-gray-600 dark:text-gray-300">Sri Vidya Mandir Senior Secondary School (CBSE), Shivaji Nagar, Salem | 2021</p>
-          <p class="text-gray-600 dark:text-gray-300">Percentage: 69%</p>
-        </div>
-        <div class="p-8 bg-white dark:bg-gray-950 rounded-xl shadow-xl card-hover glassmorphism">
-          <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">SSLC</h3>
-          <p class="text-gray-600 dark:text-gray-300">Sri Vidya Mandir Secondary School (CBSE), Kondalampatty, Salem | 2019</p>
-          <p class="text-gray-600 dark:text-gray-300">Percentage: 69%</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 2;
+                this.vy = (Math.random() - 0.5) * 2;
+                this.baseX = this.x;
+                this.baseY = this.y;
+            }
 
-  <!-- Skills Section -->
-  <section id="skills" class="py-24 bg-white dark:bg-gray-950" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 mb-10">Technical Skills</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-        <div class="p-8 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-xl card-hover glassmorphism text-center">
-          <i class="fas fa-code text-5xl text-blue-700 dark:text-blue-400 mb-6"></i>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Programming Languages</h3>
-          <p class="text-gray-600 dark:text-gray-300">Python, C, Bash, SQL</p>
-        </div>
-        <div class="p-8 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-xl card-hover glassmorphism text-center">
-          <i class="fas fa-code text-5xl text-blue-700 dark:text-blue-400 mb-6"></i>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Frameworks & Libraries</h3>
-          <p class="text-gray-600 dark:text-gray-300">FastAPI</p>
-        </div>
-        <div class="p-8 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-xl card-hover glassmorphism text-center">
-          <i class="fas fa-tools text-5xl text-blue-700 dark:text-blue-400 mb-6"></i>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Software & Tools</h3>
-          <p class="text-gray-600 dark:text-gray-300">MySQL, PostgreSQL, VS Code, Python Idle, Git</p>
-        </div>
-      </div>
-    </div>
-  </section>
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
 
-  <!-- Projects Section -->
-  <section id="projects" class="py-24 bg-gray-50 dark:bg-gray-900" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 mb-10">Projects</h2>
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div class="p-8 bg-white dark:bg-gray-950 rounded-xl shadow-xl card-hover glassmorphism">
-          <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">Smart Blind Stick</h3>
-          <p class="text-gray-600 dark:text-gray-300">Designed a sensor-based assistive device providing haptic feedback to enhance navigation safety for visually impaired individuals.</p>
-        </div>
-        <div class="p-8 bg-white dark:bg-gray-950 rounded-xl shadow-xl cardngua-hover glassmorphism">
-          <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">AI Chatbot</h3>
-          <p class="text-gray-600 dark:text-gray-300">An intelligent AI-powered chatbot built with FastAPI and PostgreSQL for seamless, scalable, and efficient conversational experiences.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+                if (mouse.x && mouse.y) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < maxDistance) {
+                        const force = (maxDistance - distance) / maxDistance;
+                        this.vx += dx * force * 0.05;
+                        this.vy += dy * force * 0.05;
+                    }
+                }
 
-  <!-- Achievements Section -->
-  <section id="achievements" class="py-24 bg-white dark:bg-gray-950" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 mb-10">Achievements & Certifications</h2>
-      <ul class="list-disc list-inside max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
-        <li>NPTEL 12-week Course: <strong>Digital System Design</strong> (50%) – Acquired expertise in logic gates and sequential circuit design.</li>
-        <li>NPTEL 12-week Course: <strong>Ethical Hacking</strong> (54%) – Developed proficiency in cybersecurity and ethical hacking techniques.</li>
-        <li><strong>C & SQL Certification</strong> – Amphisoft Technologies.</li>
-      </ul>
-    </div>
-  </section>
+                const dxBase = this.baseX - this.x;
+                const dyBase = this.baseY - this.y;
+                this.vx += dxBase * 0.02;
+                this.vy += dyBase * 0.02;
 
-  <!-- Extra Curricular Section -->
-  <section id="extra" class="py-24 bg-gray-50 dark:bg-gray-900" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 mb-10">Extracurricular Activities</h2>
-      <ul class="list-disc list-inside max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
-        <li>Basketball Zonal Level – Winner (2023 & 2024)</li>
-        <li>Kho-Kho District Level – Runner (Team Captain)</li>
-      </ul>
-    </div>
-  </section>
+                this.vx *= 0.95;
+                this.vy *= 0.95;
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-24 bg-white dark:bg-gray-950" data-aos="fade-up" data-aos-duration="1000">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 mb-10">Contact Me</h2>
-      <div class="max-w-lg mx-auto">
-        <div class="flex justify-center gap-8 mb-8">
-          <a href="mailto:janasj4444@gmail.com" class="text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300"><i class="fas fa-envelope text-3xl"></i></a>
-          <a href="https://linkedin.com/in/janarthanan-s3245b523b" target="_blank" class="text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300"><i class="fab fa-linkedin text-3xl"></i></a>
-        </div>
-        <div class="text-center text-gray-600 dark:text-gray-300 mb-8">
-          <p>Phone: +91 8248023801</p>
-          <p>Email: janasj4444@gmail.com</p>
-        </div>
-        <div class="p-8 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-xl glassmorphism">
-          <h3 class="text-xl font-semibold text-center mb-6 text-gray-900 dark:text-gray-100">Send a Message</h3>
-          <div class="space-y-6">
-            <input type="text" placeholder="Your Name" class="w-full p-4 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-700">
-            <input type="email" placeholder="Your Email" class="w-full p-4 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-700">
-            <textarea placeholder="Your Message" class="w-full p-4 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-700 h-36"></textarea>
-            <button class="w-full bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold btn-hover">Send Message</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 dark:bg-gray-950 text-white text-center py-10">
-    <p>© 2025 Janarthanan S. All rights reserved.</p>
-  </footer>
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, particleRadius, 0, Math.PI * 2);
+                ctx.fillStyle = '#00ff88';
+                ctx.fill();
+            }
+        }
 
-  <!-- JavaScript -->
-  <script>
-    // Initialize AOS
-    AOS.init({ duration: 1000 });
+        function init() {
+            particles = [];
+            for (let i = 0; i < maxParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
 
-    // Mobile Menu Toggle
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            requestAnimationFrame(animate);
+        }
 
-    // Dark/Light Mode Toggle
-    const toggleButton = document.getElementById('theme-toggle');
-    toggleButton.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-    });
+        window.addEventListener('mousemove', e => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
 
-    // Load Theme from Local Storage
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark');
-    }
-  </script>
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
 
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+
+        init();
+        animate();
+
+        // Scroll Animation Script
+        const sections = document.querySelectorAll('section');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Trigger subsection animations with staggered delay
+                    const subsections = entry.target.querySelectorAll('.item-container, .education-item, ul li');
+                    subsections.forEach((subsection, index) => {
+                        setTimeout(() => {
+                            subsection.classList.add('visible');
+                        }, index * 100); // 100ms delay per subsection
+                    });
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    </script>
 </body>
 </html>
