@@ -81,6 +81,17 @@
             align-items: center;
             height: 100vh;
             text-align: center;
+            padding: 20px;
+        }
+
+        .hero img.profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #00ff88;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+            margin-bottom: 20px;
+            object-fit: cover;
         }
 
         .hero h2 {
@@ -97,7 +108,14 @@
             margin-bottom: 20px;
         }
 
-        .contact-button {
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .contact-button, .resume-button {
             display: inline-block;
             padding: 10px 20px;
             background: transparent;
@@ -110,7 +128,7 @@
             transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .contact-button:hover {
+        .contact-button:hover, .resume-button:hover {
             background: #00ff88;
             color: #000;
             box-shadow: 0 0 15px rgba(0, 255, 136, 0.7);
@@ -122,20 +140,20 @@
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
             opacity: 0;
-            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.4s ease;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
             transform-origin: center;
         }
 
         /* Odd sections: down-to-up */
         section:nth-child(odd) {
             transform: translateY(50px) rotateX(-5deg);
-            background: rgba(0, 50, 50, 0.1); /* Dark teal */
+            background: rgba(0, 50, 50, 0.1);
         }
 
         /* Even sections: up-to-down */
         section:nth-child(even) {
             transform: translateY(-50px) rotateX(5deg);
-            background: rgba(50, 0, 50, 0.1); /* Dark purple */
+            background: rgba(50, 0, 50, 0.1);
         }
 
         section.visible {
@@ -145,7 +163,7 @@
 
         section:hover {
             opacity: 1;
-            transform: scale(1) translateY(0) rotateX(0deg); /* Ensure hover respects section animation */
+            transform: scale(1) translateY(0) rotateX(0deg);
             box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
         }
 
@@ -174,13 +192,13 @@
             display: flex;
             align-items: center;
             opacity: 0;
-            transform: translateX(100px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateX(100px) scale(0.95);
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        section.visible ul li {
+        section.visible ul li.visible {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(0) scale(1);
         }
 
         section ul li::before {
@@ -203,13 +221,14 @@
             background: rgba(255, 255, 255, 0.03);
             border-radius: 8px;
             opacity: 0;
-            transform: translateX(100px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateX(100px) scale(0.95);
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        section.visible .item-container, section.visible .education-item {
+        section.visible .item-container.visible,
+        section.visible .education-item.visible {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(0) scale(1);
         }
 
         .item-container h3, .education-item h3 {
@@ -273,6 +292,15 @@
                 font-size: 1.5em;
             }
 
+            .hero {
+                padding: 10px;
+            }
+
+            .hero img.profile-photo {
+                width: 120px;
+                height: 120px;
+            }
+
             .hero h2 {
                 font-size: 2em;
             }
@@ -281,7 +309,11 @@
                 font-size: 1.2em;
             }
 
-            .contact-button {
+            .hero-buttons {
+                gap: 10px;
+            }
+
+            .contact-button, .resume-button {
                 padding: 8px 16px;
                 font-size: 1em;
             }
@@ -345,9 +377,13 @@
     </header>
 
     <div class="hero">
+        <img src="file:///D:/Personal/Jana.jpg" alt="Janarthanan S Profile Photo" class="profile-photo">
         <h2>Hi, I'm Jana</h2>
         <p>Backend Developer | Logic Enthusiast</p>
-        <a href="mailto:janasj4444@gmail.com" class="contact-button">Contact Me</a>
+        <div class="hero-buttons">
+            <a href="mailto:janasj4444@gmail.com" class="contact-button">Contact Me</a>
+            <a href="file:///D:/Personal/Jana_New_Resume.pdf" class="resume-button" download="Jana_Resume.pdf">Download Resume</a>
+        </div>
     </div>
 
     <div class="container">
@@ -568,16 +604,19 @@
 
         const sectionObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
+                const subsections = entry.target.querySelectorAll('.item-container, .education-item, ul li');
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Trigger subsection animations with staggered delay
-                    const subsections = entry.target.querySelectorAll('.item-container, .education-item, ul li');
                     subsections.forEach((subsection, index) => {
+                        subsection.classList.remove('visible');
                         setTimeout(() => {
                             subsection.classList.add('visible');
-                        }, index * 100); // 100ms delay per subsection
+                        }, index * 80); // 80ms delay per subsection
                     });
-                    observer.unobserve(entry.target); // Stop observing once visible
+                } else {
+                    subsections.forEach(subsection => {
+                        subsection.classList.remove('visible');
+                    });
                 }
             });
         }, observerOptions);
