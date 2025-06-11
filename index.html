@@ -82,35 +82,50 @@
             height: 100vh;
             text-align: center;
             padding: 20px;
+            gap: 15px; /* Added for consistent spacing */
         }
 
         .hero img.profile-photo {
-            width: 150px;
-            height: 150px;
+            width: 200px; /* Increased for prominence */
+            height: 200px;
             border-radius: 50%;
-            border: 3px solid #00ff88;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
-            margin-bottom: 20px;
+            border: 4px solid #00ff88; /* Thicker border */
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6), inset 0 0 5px rgba(255, 255, 255, 0.2); /* Enhanced glow + inner shadow */
+            margin-bottom: 25px; /* More space below */
             object-fit: cover;
+            object-position: center; /* Center the image */
+            opacity: 0; /* For entrance animation */
+            transform: scale(0.8); /* Start smaller */
+            transition: opacity 0.6s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+        }
+
+        .hero img.profile-photo.visible {
+            opacity: 1;
+            transform: scale(1); /* Animate to full size */
+        }
+
+        .hero img.profile-photo:hover {
+            transform: scale(1.05); /* Subtle zoom on hover */
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
         }
 
         .hero h2 {
-            font-size: 3em;
+            font-size: 3.5em; /* Larger for emphasis */
             color: #00ff88;
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-            margin-bottom: 10px;
+            text-shadow: 0 0 12px rgba(0, 255, 136, 0.6);
+            margin-bottom: 12px;
         }
 
         .hero p {
-            font-size: 1.5em;
+            font-size: 1.6em; /* Larger for readability */
             color: #ddd;
-            text-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
-            margin-bottom: 20px;
+            text-shadow: 0 0 6px rgba(0, 255, 136, 0.4);
+            margin-bottom: 25px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 15px;
+            gap: 20px; /* Increased spacing */
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -297,20 +312,23 @@
             }
 
             .hero img.profile-photo {
-                width: 120px;
-                height: 120px;
+                width: 150px; /* Larger for mobile */
+                height: 150px;
+                border: 3px solid #00ff88;
+                box-shadow: 0 0 15px rgba(0, 255, 136, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.2);
+                margin-bottom: 20px;
             }
 
             .hero h2 {
-                font-size: 2em;
+                font-size: 2.5em; /* Adjusted for mobile */
             }
 
             .hero p {
-                font-size: 1.2em;
+                font-size: 1.3em; /* Adjusted for mobile */
             }
 
             .hero-buttons {
-                gap: 10px;
+                gap: 15px;
             }
 
             .contact-button, .resume-button {
@@ -623,6 +641,14 @@
 
         sections.forEach(section => {
             sectionObserver.observe(section);
+        });
+
+        // Profile Photo Animation
+        window.addEventListener('load', () => {
+            const profilePhoto = document.querySelector('.hero img.profile-photo');
+            setTimeout(() => {
+                profilePhoto.classList.add('visible');
+            }, 200); // Delay for smooth effect
         });
     </script>
 </body>
