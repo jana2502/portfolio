@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Janarthanan S - Portfolio</title>
     <!-- Font Awesome CDN for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,7 +34,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: clamp(10px, 3vw, 20px);
+            padding: 20px;
             position: relative;
             z-index: 1;
         }
@@ -43,7 +43,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: clamp(10px, 2vw, 20px);
+            padding: 20px;
             position: fixed;
             width: 100%;
             top: 0;
@@ -51,8 +51,15 @@
             background: rgba(0, 0, 0, 0.7);
         }
 
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: #00ff88;
+        }
+
         header h1 {
-            font-size: clamp(1.2em, 4vw, 1.8em);
+            font-size: 1.8em;
             color: #00ff88;
             text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
         }
@@ -60,19 +67,18 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: clamp(10px, 2vw, 20px);
+            gap: 20px;
         }
 
         nav ul li a {
             color: #00ff88;
             text-decoration: none;
-            font-size: clamp(0.9em, 2.5vw, 1.1em);
+            font-size: 1.1em;
             transition: color 0.3s;
         }
 
-        nav ul li a:hover, nav ul li a:focus {
+        nav ul li a:hover {
             color: #fff;
-            outline: none;
         }
 
         .hero {
@@ -82,17 +88,17 @@
             align-items: center;
             height: 100vh;
             text-align: center;
-            padding: clamp(10px, 5vw, 20px);
-            gap: clamp(10px, 2vh, 15px);
+            padding: 20px;
+            gap: 15px;
         }
 
         .hero img.profile-photo {
-            width: clamp(150px, 20vw, 200px);
-            height: clamp(150px, 20vw, 200px);
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             border: 4px solid #00ff88;
             box-shadow: 0 0 20px rgba(0, 255, 136, 0.6), inset 0 0 5px rgba(255, 255, 255, 0.2);
-            margin-bottom: clamp(15px, 3vh, 25px);
+            margin-bottom: 25px;
             object-fit: cover;
             object-position: center;
             opacity: 0;
@@ -111,34 +117,34 @@
         }
 
         .hero h2 {
-            font-size: clamp(2em, 6vw, 3.5em);
+            font-size: 3.5em;
             color: #00ff88;
             text-shadow: 0 0 12px rgba(0, 255, 136, 0.6);
-            margin-bottom: clamp(8px, 1.5vh, 12px);
+            margin-bottom: 12px;
         }
 
         .hero p {
-            font-size: clamp(1.2em, 3.5vw, 1.6em);
+            font-size: 1.6em;
             color: #ddd;
             text-shadow: 0 0 6px rgba(0, 255, 136, 0.4);
-            margin-bottom: clamp(15px, 3vh, 25px);
+            margin-bottom: 25px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: clamp(10px, 2vw, 20px);
+            gap: 20px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .contact-button, .resume-button {
             display: inline-block;
-            padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
+            padding: 10px 20px;
             background: transparent;
             border: 2px solid #00ff88;
             color: #00ff88;
             text-decoration: none;
-            font-size: clamp(0.9em, 2.5vw, 1.1em);
+            font-size: 1.1em;
             border-radius: 5px;
             text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
             transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
@@ -151,8 +157,8 @@
         }
 
         section {
-            margin: clamp(20px, 5vh, 40px) 0;
-            padding: clamp(10px, 3vw, 20px);
+            margin: 40px 0;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
             opacity: 0;
@@ -183,14 +189,14 @@
 
         section h2 {
             color: #00ff88;
-            font-size: clamp(1.5em, 4vw, 2em);
-            margin-bottom: clamp(10px, 2vh, 20px);
+            font-size: 2em;
+            margin-bottom: 20px;
             border-bottom: 2px solid #00ff88;
-            padding-bottom: clamp(5px, 1vh, 10px);
+            padding-bottom: 10px;
         }
 
         section p, section ul {
-            font-size: clamp(0.9em, 2.5vw, 1.1em);
+            font-size: 1.1em;
             line-height: 1.6;
             color: #ddd;
         }
@@ -200,9 +206,9 @@
         }
 
         section ul li {
-            margin: clamp(5px, 1vh, 10px) 0;
+            margin: 10px 0;
             position: relative;
-            padding-left: clamp(30px, 5vw, 40px);
+            padding-left: 40px;
             display: flex;
             align-items: center;
             opacity: 0;
@@ -223,16 +229,15 @@
         }
 
         .skill-logo {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             margin-right: 8px;
-            filter: drop-shadow(0 0 3px rgba(0, 255, 136, 0.3));
-            background-color: rgba(255, 255, 255, 0.1);
+            filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.5));
         }
 
         .item-container, .education-item {
-            margin-bottom: clamp(10px, 2vh, 15px);
-            padding: clamp(10px, 2vw, 15px);
+            margin-bottom: 15px;
+            padding: 15px;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 8px;
             opacity: 0;
@@ -248,7 +253,7 @@
 
         .item-container h3, .education-item h3 {
             color: #00ff88;
-            font-size: clamp(1.2em, 3vw, 1.5em);
+            font-size: 1.5em;
             margin-bottom: 5px;
         }
 
@@ -260,176 +265,203 @@
             border: none;
             height: 1px;
             background: linear-gradient(to right, rgba(0, 255, 136, 0), rgba(0, 255, 136, 0.5), rgba(0, 255, 136, 0));
-            margin: clamp(10px, 2vh, 15px) 0;
+            margin: 15px 0;
             box-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
         }
 
         footer {
             text-align: center;
-            padding: clamp(10px, 3vw, 20px);
+            padding: 20px;
             background: rgba(0, 0, 0, 0.8);
-            margin-top: clamp(20px, 5vh, 40px);
+            margin-top: 40px;
         }
 
         footer p {
             color: #ccc;
-            margin-bottom: clamp(10px, 2vh, 15px);
+            margin-bottom: 15px;
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: clamp(10px, 2vw, 20px);
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .contact-links a, .contact-links span {
             color: #00ff88;
             text-decoration: none;
-            font-size: clamp(0.9em, 2.5vw, 1.1em);
+            font-size: 1.1em;
             display: flex;
             align-items: center;
             gap: 8px;
             transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
-        .contact-links a:hover, .contact-links a:focus {
+        .contact-links a:hover {
             color: #fff;
             text-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
-            outline: none;
         }
 
         .contact-links i {
-            font-size: clamp(1em, 2.5vw, 1.2em);
-        }
-
-        @media (max-width: 1024px) {
-            .hero img.profile-photo {
-                width: clamp(140px, 18vw, 180px);
-                height: clamp(140px, 18vw, 180px);
-            }
-
-            .hero h2 {
-                font-size: clamp(1.8em, 5vw, 3em);
-            }
-
-            .hero p {
-                font-size: clamp(1.1em, 3vw, 1.4em);
-            }
+            font-size: 1.2em;
         }
 
         @media (max-width: 768px) {
-            header h1 {
-                font-size: clamp(1em, 3.5vw, 1.5em);
+            /* Header adjustments */
+            header {
+                flex-direction: column;
+                padding: 15px;
+                align-items: flex-start;
+            }
+
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+            }
+
+            nav.active {
+                display: block;
             }
 
             nav ul {
                 flex-direction: column;
                 gap: 10px;
+                width: 100%;
+                align-items: center;
+                background: rgba(0, 0, 0, 0.9);
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            header h1 {
+                font-size: 1.4em;
+                margin-bottom: 10px;
             }
 
             nav ul li a {
-                font-size: clamp(0.8em, 2vw, 0.9em);
+                font-size: 1em;
+                padding: 5px 10px;
             }
 
+            /* Hero section adjustments */
             .hero {
-                padding: 10px;
+                padding: 15px;
+                height: auto;
+                min-height: 80vh;
             }
 
             .hero img.profile-photo {
-                width: clamp(120px, 16vw, 150px);
-                height: clamp(120px, 16vw, 150px);
-                border: 3px solid #00ff88;
-                box-shadow: 0 0 15px rgba(0, 255, 136, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.2);
-                margin-bottom: 20px;
+                width: 120px;
+                height: 120px;
+                border: 2px solid #00ff88;
+                margin-bottom: 15px;
             }
 
             .hero h2 {
-                font-size: clamp(1.5em, 4.5vw, 2.5em);
+                font-size: 2em;
+                margin-bottom: 10px;
             }
 
             .hero p {
-                font-size: clamp(1em, 2.5vw, 1.3em);
+                font-size: 1.1em;
+                margin-bottom: 20px;
             }
 
             .hero-buttons {
-                gap: 15px;
+                gap: 10px;
+                flex-direction: column;
             }
 
             .contact-button, .resume-button {
-                padding: 8px 16px;
-                font-size: clamp(0.8em, 2vw, 1em);
+                padding: 8px 20px;
+                font-size: 0.9em;
             }
 
+            /* Section adjustments */
             section {
+                margin: 20px 0;
                 padding: 15px;
             }
 
             section h2 {
-                font-size: clamp(1.2em, 3.5vw, 1.5em);
+                font-size: 1.4em;
+                margin-bottom: 15px;
             }
 
             .item-container, .education-item {
                 padding: 10px;
+                margin-bottom: 10px;
             }
 
-            .contact-links {
-                gap: 15px;
-            }
-
-            .contact-links a, .contact-links span {
-                font-size: clamp(0.8em, 2vw, 1em);
-            }
-
-            .contact-links i {
-                font-size: clamp(0.9em, 2vw, 1.1em);
+            .item-container h3, .education-item h3 {
+                font-size: 1.3em;
             }
 
             section ul li {
-                padding-left: 35px;
-            }
-
-            .skill-logo {
-                width: 20px;
-                height: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            nav ul {
-                align-items: center;
-            }
-
-            .hero img.profile-photo {
-                width: clamp(100px, 15vw, 120px);
-                height: clamp(100px, 15vw, 120px);
-            }
-
-            .hero h2 {
-                font-size: clamp(1.2em, 4vw, 2em);
-            }
-
-            .hero p {
-                font-size: clamp(0.9em, 2vw, 1.1em);
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            section ul li {
+                font-size: 1em;
                 padding-left: 30px;
             }
 
             .skill-logo {
-                width: 18px;
-                height: 18px;
+                width: 16px;
+                height: 16px;
+            }
+
+            /* Footer adjustments */
+            footer {
+                padding: 15px;
+            }
+
+            .contact-links {
+                gap: 10px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-links a, .contact-links span {
+                font-size: 0.9em;
+            }
+
+            .contact-links i {
+                font-size: 1em;
+            }
+
+            /* Optimize animations for mobile */
+            section, .hero img.profile-photo, .item-container, .education-item, section ul li {
+                transition: none;
+                transform: none;
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero img.profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .hero h2 {
+                font-size: 1.8em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            section h2 {
+                font-size: 1.2em;
+            }
+
+            .item-container h3, .education-item h3 {
+                font-size: 1.2em;
             }
         }
     </style>
@@ -438,6 +470,9 @@
     <canvas id="canvas"></canvas>
     <header>
         <h1>Janarthanan S</h1>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
         <nav>
             <ul>
                 <li><a href="#objective">About</a></li>
@@ -450,12 +485,12 @@
     </header>
 
     <div class="hero">
-        <img src="assets/images/Jana.jpg" alt="Janarthanan S Professional Headshot" class="profile-photo">
+        <img src="Jana.jpg" alt="Janarthanan S Profile Photo" class="profile-photo">
         <h2>Hi, I'm Jana</h2>
         <p>Backend Developer | Logic Enthusiast</p>
         <div class="hero-buttons">
             <a href="mailto:janasj4444@gmail.com" class="contact-button">Contact Me</a>
-            <a href="assets/documents/Jana_New_Resume.pdf" class="resume-button" download="Jana_Resume.pdf">Download Resume</a>
+            <a href="Jana_New_Resume.pdf" class="resume-button" download="Jana_Resume.pdf">Download Resume</a>
         </div>
     </div>
 
@@ -511,27 +546,27 @@
             <h2>Skills</h2>
             <ul class="item-container">
                 <h3>Programming Languages</h3>
-                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg" alt="Python Logo" class="skill-logo" loading="lazy"> Python</li>
-                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/c.svg" alt="C Logo" class="skill-logo" loading="lazy"> C</li>
-                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gnubash.svg" alt="Bash Logo" class="skill-logo" loading="lazy"> Bash</li>
-                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg" alt="SQL Logo" class="skill-logo" loading="lazy"> SQL</li>
-                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg" alt="NoSQL Logo" class="skill-logo" loading="lazy"> NoSQL</li>
-                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/html5.svg" alt="HTML Logo" class="skill-logo" loading="lazy"> HTML</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg" alt="Python" class="skill-logo"> Python</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/c.svg" alt="C" class="skill-logo"> C</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gnubash.svg" alt="Bash" class="skill-logo"> Bash</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg" alt="SQL" class="skill-logo"> SQL</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg" alt="NoSQL" class="skill-logo"> NoSQL</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/html5.svg" alt="HTML" class="skill-logo"> HTML</li>
             </ul>
             <hr class="divider">
             <ul class="item-container">
                 <h3>Frameworks & Libraries</h3>
-                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/fastapi.svg" alt="FastAPI Logo" class="skill-logo" loading="lazy"> FastAPI</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/fastapi.svg" alt="FastAPI" class="skill-logo"> FastAPI</li>
             </ul>
             <hr class="divider">
             <ul class="item-container">
                 <h3>Software & Tools</h3>
-                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg" alt="MySQL Logo" class="skill-logo" loading="lazy"> MySQL</li>
-                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg" alt="PostgreSQL Logo" class="skill-logo" loading="lazy"> PostgreSQL</li>
-                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg" alt="MongoDB Logo" class="skill-logo" loading="lazy"> MongoDB</li>
-                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/git.svg" alt="Git Logo" class="skill-logo" loading="lazy"> Git</li>
-                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/visualstudiocode.svg" alt="VS Code Logo" class="skill-logo" loading="lazy"> VS Code</li>
-                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg" alt="Python Idle Logo" class="skill-logo" loading="lazy"> Python Idle</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg" alt="MySQL" class="skill-logo"> MySQL</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg" alt="PostgreSQL" class="skill-logo"> PostgreSQL</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg" alt="MongoDB" class="skill-logo"> MongoDB</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/git.svg" alt="Git" class="skill-logo"> Git</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/visualstudiocode.svg" alt="VS Code" class="skill-logo"> VS Code</li>
+                <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg" alt="Python Idle" class="skill-logo"> Python Idle</li>
             </ul>
         </section>
 
@@ -577,44 +612,38 @@
         // Particle Background Script
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+
+        // Set canvas size to match viewport
+        function resizeCanvas() {
+            canvas.width = window.innerWidth * window.devicePixelRatio;
+            canvas.height = window.innerHeight * window.devicePixelRatio;
+            canvas.style.width = window.innerWidth + 'px';
+            canvas.style.height = window.innerHeight + 'px';
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+
+        resizeCanvas();
 
         let particles = [];
         const mouse = { x: null, y: null };
-        const maxParticles = 100;
-        const maxDistance = 120; // Distance for connecting lines
-        let scrollY = 0; // Track scroll position
-        let scrollSpeed = 0; // Track scroll speed for effect
+        const maxParticles = window.innerWidth < 768 ? 50 : 100;
+        const particleRadius = 2;
+        const maxDistance = 100;
 
         class Particle {
             constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
+                this.x = Math.random() * canvas.width / window.devicePixelRatio;
+                this.y = Math.random() * canvas.height / window.devicePixelRatio;
                 this.vx = (Math.random() - 0.5) * 1.5;
                 this.vy = (Math.random() - 0.5) * 1.5;
                 this.baseX = this.x;
                 this.baseY = this.y;
-                this.radius = Math.random() * 3 + 1; // Varied size (1-4px)
-                this.opacity = Math.random() * 0.5 + 0.3; // Varied opacity
-                this.timeOffset = Math.random() * 100; // For organic motion
             }
 
-            update(time) {
-                // Organic movement using sinusoidal motion
-                const t = time * 0.001 + this.timeOffset;
-                this.vx += Math.sin(t * 0.5) * 0.02;
-                this.vy += Math.cos(t * 0.3) * 0.02;
-
-                // Scroll effect: adjust speed and spread
-                const scrollFactor = 1 + scrollSpeed * 0.05;
-                this.vx *= scrollFactor;
-                this.vy *= scrollFactor;
-
+            update() {
                 this.x += this.vx;
                 this.y += this.vy;
 
-                // Mouse interaction
                 if (mouse.x && mouse.y) {
                     const dx = mouse.x - this.x;
                     const dy = mouse.y - this.y;
@@ -626,27 +655,22 @@
                     }
                 }
 
-                // Return to base position
                 const dxBase = this.baseX - this.x;
                 const dyBase = this.baseY - this.y;
                 this.vx += dxBase * 0.01;
                 this.vy += dyBase * 0.01;
 
-                // Damping
                 this.vx *= 0.97;
                 this.vy *= 0.97;
 
-                // Boundary checks
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                if (this.x < 0 || this.x > canvas.width / window.devicePixelRatio) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height / window.devicePixelRatio) this.vy *= -1;
             }
 
             draw() {
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                // Scroll effect: color shift
-                const colorShift = Math.min(scrollSpeed * 20, 50);
-                ctx.fillStyle = `rgba(0, ${255 - colorShift}, ${136 + colorShift}, ${this.opacity})`;
+                ctx.arc(this.x, this.y, particleRadius, 0, Math.PI * 2);
+                ctx.fillStyle = '#00ff88';
                 ctx.fill();
             }
         }
@@ -658,46 +682,16 @@
             }
         }
 
-        function connectParticles() {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const p1 = particles[i];
-                    const p2 = particles[j];
-                    const dx = p1.x - p2.x;
-                    const dy = p1.y - p2.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < maxDistance) {
-                        ctx.beginPath();
-                        ctx.moveTo(p1.x, p1.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        const alpha = (1 - distance / maxDistance) * 0.2;
-                        ctx.strokeStyle = `rgba(0, 255, 136, ${alpha})`;
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        let lastScrollY = window.scrollY;
-        let lastTime = 0;
-
-        function animate(time) {
+        function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Update scroll speed
-            scrollSpeed = Math.abs((window.scrollY - lastScrollY) * 0.1);
-            scrollSpeed = Math.max(0, Math.min(scrollSpeed, 5)); // Clamp speed
-            lastScrollY = window.scrollY;
-
             particles.forEach(particle => {
-                particle.update(time);
+                particle.update();
                 particle.draw();
             });
-
-            connectParticles();
             requestAnimationFrame(animate);
         }
 
+        // Mouse and touch events
         window.addEventListener('mousemove', e => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
@@ -708,14 +702,39 @@
             mouse.y = null;
         });
 
+        window.addEventListener('touchmove', e => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            mouse.x = touch.clientX;
+            mouse.y = touch.clientY;
+        });
+
+        window.addEventListener('touchend', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
         window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            resizeCanvas();
             init();
         });
 
+        // Optimize for mobile performance
+        if (/Mobi|Android/i.test(navigator.userAgent)) {
+            // Optionally disable animation on mobile if performance is poor
+            // canvas.style.display = 'none'; // Uncomment to disable canvas on mobile
+        }
+
         init();
-        requestAnimationFrame(animate);
+        animate();
+
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
 
         // Scroll Animation Script
         const sections = document.querySelectorAll('section');
